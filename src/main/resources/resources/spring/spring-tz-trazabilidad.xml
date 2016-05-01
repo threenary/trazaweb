@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<import resource="spring-tz-trazabilidad-advices.xml" />
+	<import resource="spring-tz-trazabilidad-advisors.xml" />
+	<import resource="spring-tz-trazabilidad-daos.xml" />
+	<import resource="spring-tz-trazabilidad-email.xml" />
+	<import resource="spring-tz-trazabilidad-properties-files.xml" />
+	<import resource="spring-tz-trazabilidad-services-proxies.xml" />
+	<import resource="spring-tz-trazabilidad-services.xml" />
+	<import resource="spring-tz-trazabilidad-hibernate-mappings.xml" />
+	<import resource="spring-tz-trazabilidad-ws.xml" />
+
+</beans>

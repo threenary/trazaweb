@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<!-- PROXY PARA SERVICIO CRUD DE ENVIO -->
+	<bean id="ar.com.mbsoftsa.trazabilidad.service.crud.EnvioCRUDService"
+		parent="abstractCRUDService" autowire-candidate="true">
+		<property name="target">
+			<ref
+				bean="ar.com.mbsoftsa.trazabilidad.service.crud.EnvioCRUDServiceTarget" />
+		</property>
+		<property name="postInterceptors">
+			<list>
+				<ref bean="envioCerradoValidationAdvisor" />
+			</list>
+		</property>
+	</bean>
+	
+	<!-- PROXY PARA SERVICIO BUSINESS DE ENVIO -->
+	<bean
+		id="ar.com.mbsoftsa.trazabilidad.service.business.IEnvioBusinessService"
+		parent="abstractBusinessService" autowire-candidate="true">
+		<property name="proxyInterfaces">
+			<value>ar.com.mbsoftsa.trazabilidad.service.business.IEnvioBusinessService
+			</value>
+		</property>
+		<property name="target">
+			<ref
+				bean="ar.com.mbsoftsa.trazabilidad.service.business.implementation.EnvioBusinessService" />
+		</property>
+		<property name="postInterceptors">
+			<list>
+				<ref bean="envioCerradoValidationAdvisor" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- PROXY PARA SERVICIO CRUD DE MOVIMIENTO -->
+	<bean id="ar.com.mbsoftsa.trazabilidad.service.crud.MovimientoCRUDService"
+		parent="abstractCRUDService" autowire-candidate="true">
+		<property name="target">
+			<ref
+				bean="ar.com.mbsoftsa.trazabilidad.service.crud.MovimientoCRUDServiceTarget" />
+		</property>
+		<property name="postInterceptors">
+			<list>
+				<ref bean="movimientoCerradoValidationAdvisor" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- PROXY PARA SERVICIO BUSINESS DE MOVIMIENTO -->
+	<bean
+		id="ar.com.mbsoftsa.trazabilidad.service.business.IMovimientoBusinessService"
+		parent="abstractBusinessService" autowire-candidate="true">
+		<property name="proxyInterfaces">
+			<value>ar.com.mbsoftsa.trazabilidad.service.business.IMovimientoBusinessService
+			</value>
+		</property>
+		<property name="target">
+			<ref
+				bean="ar.com.mbsoftsa.trazabilidad.service.business.implementation.MovimientoBusinessService" />
+		</property>
+<!-- 		<property name="postInterceptors"> -->
+<!-- 			<list> -->
+<!-- 				<ref bean="movimientoCerradoValidationAdvisor" /> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+	</bean>
+
+	<!-- PROXY PARA SERVICIO CRUD DE CANCELACION -->
+	<bean
+		id="ar.com.mbsoftsa.trazabilidad.service.crud.CancelacionCRUDService"
+		parent="abstractCRUDService" autowire-candidate="true">
+		<property name="target">
+			<ref
+				bean="ar.com.mbsoftsa.trazabilidad.service.crud.CancelacionCRUDServiceTarget" />
+		</property>
+		<property name="postInterceptors">
+			<list>
+				<ref bean="cancelacionCerradaValidationAdvisor" />
+			</list>
+		</property>
+	</bean>
+	
+	<!-- PROXY PARA SERVICIO BUSINESS DE CANCELACION -->
+	<bean
+		id="ar.com.mbsoftsa.trazabilidad.service.business.ICancelacionBusinessService"
+		parent="abstractBusinessService" autowire-candidate="true">
+		<property name="proxyInterfaces">
+			<value>ar.com.mbsoftsa.trazabilidad.service.business.ICancelacionBusinessService
+			</value>
+		</property>
+		<property name="target">
+			<ref
+				bean="ar.com.mbsoftsa.trazabilidad.service.business.implementation.CancelacionBusinessService" />
+		</property>
+<!-- 		<property name="postInterceptors"> -->
+<!-- 			<list> -->
+<!-- 				<ref bean="cancelacionCerradaValidationAdvisor" /> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+	</bean>
+
+	<!-- PROXY PARA SERVICIO CRUD DE AGENTE -->
+	<bean id="ar.com.mbsoftsa.trazabilidad.service.crud.AgenteCRUDService"
+		parent="abstractCRUDService" autowire-candidate="true">
+		<property name="target">
+			<ref
+				bean="ar.com.mbsoftsa.trazabilidad.service.crud.AgenteCRUDServiceTarget" />
+		</property>
+	</bean>
+
+	<!-- PROXY PARA SERVICIO CRUD DE TIPO DE AGENTE -->
+	<bean id="ar.com.mbsoftsa.trazabilidad.service.crud.TipoAgenteCRUDService"
+		parent="abstractCRUDService" autowire-candidate="true">
+		<property name="target">
+			<ref
+				bean="ar.com.mbsoftsa.trazabilidad.service.crud.TipoAgenteCRUDServiceTarget" />
+		</property>
+	</bean>
+
+	<!-- PROXY PARA SERVICIO CRUD DE EVENTO -->
+	<bean id="ar.com.mbsoftsa.trazabilidad.service.crud.EventoCRUDService"
+		parent="abstractCRUDService" autowire-candidate="true">
+		<property name="target">
+			<ref
+				bean="ar.com.mbsoftsa.trazabilidad.service.crud.EventoCRUDServiceTarget" />
+		</property>
+	</bean>
+
+	<!-- PROXY PARA SERVICIO CRUD DE MEDICAMENTO -->
+	<bean
+		id="ar.com.mbsoftsa.trazabilidad.service.crud.MedicamentoCRUDService"
+		parent="abstractCRUDService" autowire-candidate="true">
+		<property name="target">
+			<ref
+				bean="ar.com.mbsoftsa.trazabilidad.service.crud.MedicamentoCRUDServiceTarget" />
+		</property>
+	</bean>
+
+	<!-- PROXY PARA SERVICIO CRUD DE WSUSER -->
+	<bean id="ar.com.mbsoftsa.trazabilidad.service.crud.WSUserCRUDService"
+		parent="abstractCRUDService" autowire-candidate="true">
+		<property name="target">
+			<ref
+				bean="ar.com.mbsoftsa.trazabilidad.service.crud.WSUserCRUDServiceTarget" />
+		</property>
+	</bean>
+
+	<!-- PROXY PARA SERVICIO CRUD DE WSERROR -->
+	<bean id="ar.com.mbsoftsa.trazabilidad.service.crud.WSErrorCRUDService"
+		parent="abstractCRUDService" autowire-candidate="true">
+		<property name="target">
+			<ref
+				bean="ar.com.mbsoftsa.trazabilidad.service.crud.WSErrorCRUDServiceTarget" />
+		</property>
+		<property name="postInterceptors">
+			<list>
+				<ref bean="envioCerradoValidationAdvisor" />
+			</list>
+		</property>
+	</bean>
+</beans>

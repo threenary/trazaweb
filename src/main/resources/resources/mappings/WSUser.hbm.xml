@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ar.com.mbsoftsa.trazabilidad.domain">
+	<class batch-size="100" lazy="true" name="WSUser" table="TZ_USUARIO">
+		<id column="ID" name="id" type="long" unsaved-value="0">
+			<generator class="identity" />
+		</id>
+		
+		<version column="PERSISTENT_VERSION" generated="never"
+			name="persistentVersion" type="long" unsaved-value="negative" />
+			
+		<property column="NOMBRE" generated="never" lazy="false"
+			name="nombre" type="string" />
+			
+		<property column="PASSWORD" generated="never" lazy="false"
+			name="password" type="string" />
+			
+		<property name="hashRecuperarPassword" column="HASH_PWD"
+			type="string" not-null="false" />			
+	</class>
+</hibernate-mapping>

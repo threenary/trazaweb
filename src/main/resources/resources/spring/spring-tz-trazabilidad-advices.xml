@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+	
+	<!--++++++++++++++++++++++++++++++++-->
+	<!--| INTERCEPTORES DE MOVIMIENTO  |-->
+	<!--++++++++++++++++++++++++++++++++-->
+	<!-- INTERCEPTOR DE VALIDACION DE MOVIMIENTO CERRADO -->
+	<bean id="movimientoCerradoValidationAdvice" parent="abstractGenericBeforeAdvice"
+		class="ar.com.mbsoftsa.trazabilidad.service.advice.validation.MovimientoCerradoValidationAdvice">
+	</bean>
+
+	<!--+++++++++++++++++++++++++++++++++-->
+	<!--| INTERCEPTORES DE CANCELACION  |-->
+	<!--+++++++++++++++++++++++++++++++++-->
+	<!-- INTERCEPTOR DE VALIDACION DE CANCELACION CERRADA -->
+	<bean id="cancelacionCerradaValidationAdvice" parent="abstractGenericBeforeAdvice"
+		class="ar.com.mbsoftsa.trazabilidad.service.advice.validation.CancelacionCerradaValidationAdvice">
+	</bean>
+
+	<!--+++++++++++++++++++++++++++++++++-->
+	<!--|	 INTERCEPTORES DE ENVIO 	|-->
+	<!--+++++++++++++++++++++++++++++++++-->
+	<!-- INTERCEPTOR DE VALIDACION DE ENVIO CERRADO -->
+	<bean id="envioCerradoValidationAdvice" parent="abstractGenericBeforeAdvice"
+		class="ar.com.mbsoftsa.trazabilidad.service.advice.validation.EnvioCerradoValidationAdvice">
+	</bean>
+
+</beans>

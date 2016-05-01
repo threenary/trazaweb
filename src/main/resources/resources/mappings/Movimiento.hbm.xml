@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ar.com.mbsoftsa.trazabilidad.domain">
+	<class batch-size="100" lazy="true" name="Movimiento" table="TZ_MOVIMIENTO">
+		<id column="ID" name="id" type="long" unsaved-value="0">
+			<generator class="identity" />
+		</id>
+		<version column="PERSISTENT_VERSION" generated="never"
+			name="persistentVersion" type="long" unsaved-value="negative" />
+			
+		<property name="estadoTrazable" column="ESTADO" not-null="true">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">ar.com.mbsoftsa.trazabilidad.domain.enums.EstadoTrazable</param>
+				<param name="type">12</param>
+			</type>
+		</property>
+		
+		<property name="edicion" column="EDICION" not-null="true">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">ar.com.mbsoftsa.trazabilidad.domain.enums.EstadoEdicion</param>
+				<param name="type">12</param>
+			</type>
+		</property>
+		
+		<property column="FECHA_EVENTO" name="fechaEvento" type="calendar" />
+
+		<property column="HORA_EVENTO" name="horaEvento" type="calendar" />
+
+		<property column="NRO_REMITO" name="remito" type="long" />
+
+		<property column="NRO_FACTURA" name="factura" type="long" />
+
+		<many-to-one column="ID_ENTIDAD_ORIGEN" name="agenteOrigen"
+			class="Agente" not-null="true" cascade="save-update" />
+
+		<many-to-one column="ID_ENTIDAD_DESTINO" name="agenteDestino"
+			class="Agente" not-null="false" cascade="save-update" />
+
+		<many-to-one column="ID_EVENTO" name="evento" class="Evento"
+			not-null="true" cascade="save-update" />
+
+		<set name="envios" inverse="true">
+			<key column="ID" />
+			<one-to-many class="Envio"/>
+		</set>
+
+		<!-- EN CASO DE MUESTRA MEDICA -->
+		<property column="APELLIDO" name="apellido" type="string" />
+
+		<property column="NOMBRES" name="nombre" type="string" />
+		
+		<property column="SEXO" name="sexo" type="string" />
+
+		<property column="TIPO_DOCUMENTO" name="idTipoDocumento" type="int" />
+
+		<property column="N_DOCUMENTO" name="nroDocumento" type="string" />
+
+		<property column="DIRECCION" name="direccion" type="string" />
+
+		<property column="LOCALIDAD" name="localidad" type="string" />
+
+		<property column="NUMERO" name="numero" type="string" />
+
+		<property column="PISO" name="piso" type="string" />
+
+		<property column="DPTO" name="dpto" type="string" />
+
+		<property column="N_POSTAL" name="codigoPostal" type="string" />
+
+		<property column="TELEFONO" name="telefono" type="string" />
+
+		<property column="ID_OBRA_SOCIAL" name="idObraSocial" type="int" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<!-- SERVICIO CRUD DE ENVIO -->
+	<bean
+		id="ar.com.mbsoftsa.trazabilidad.service.crud.EnvioCRUDServiceTarget"
+		class="ar.com.mbsoftsa.trazabilidad.service.crud.EnvioCRUDService"
+		parent="abstractGenericCRUDServiceTarget" autowire-candidate="false">
+		<property name="envioDAO" ref="envioDAO" />
+	</bean>
+
+	<!-- SERVICIO BUSINESS DE ENVIO -->
+	<bean
+		id="ar.com.mbsoftsa.trazabilidad.service.business.implementation.EnvioBusinessService"
+		class="ar.com.mbsoftsa.trazabilidad.service.business.implementation.EnvioBusinessService"
+		parent="abstractGenericServiceTarget" autowire-candidate="false">
+		<property name="envioDAO" ref="envioDAO" />
+	</bean>
+
+
+	<!-- SERVICIO CRUD DE MOVIMIENTO -->
+	<bean
+		id="ar.com.mbsoftsa.trazabilidad.service.crud.MovimientoCRUDServiceTarget"
+		class="ar.com.mbsoftsa.trazabilidad.service.crud.MovimientoCRUDService"
+		parent="abstractGenericCRUDServiceTarget" autowire-candidate="false">
+		<property name="movimientoDAO" ref="movimientoDAO" />
+	</bean>
+
+	<!-- SERVICIO BUSINESS DE MOVIMIENTO -->
+	<bean
+		id="ar.com.mbsoftsa.trazabilidad.service.business.implementation.MovimientoBusinessService"
+		class="ar.com.mbsoftsa.trazabilidad.service.business.implementation.MovimientoBusinessService"
+		parent="abstractGenericServiceTarget" autowire-candidate="false">
+		<property name="movimientoDAO" ref="movimientoDAO" />
+	</bean>
+
+	<!-- SERVICIO CRUD DE CANCELACION -->
+	<bean
+		id="ar.com.mbsoftsa.trazabilidad.service.crud.CancelacionCRUDServiceTarget"
+		class="ar.com.mbsoftsa.trazabilidad.service.crud.CancelacionCRUDService"
+		parent="abstractGenericCRUDServiceTarget" autowire-candidate="false">
+		<property name="cancelacionDAO" ref="cancelacionDAO" />
+	</bean>
+	
+	<!-- SERVICIO BUSINESS DE CANCELACION -->
+	<bean
+		id="ar.com.mbsoftsa.trazabilidad.service.business.implementation.CancelacionBusinessService"
+		class="ar.com.mbsoftsa.trazabilidad.service.business.implementation.CancelacionBusinessService"
+		parent="abstractGenericServiceTarget" autowire-candidate="false">
+		<property name="cancelacionDAO" ref="cancelacionDAO" />
+	</bean>
+	
+
+	<!-- SERVICIO CRUD DE AGENTE -->
+	<bean
+		id="ar.com.mbsoftsa.trazabilidad.service.crud.AgenteCRUDServiceTarget"
+		class="ar.com.mbsoftsa.trazabilidad.service.crud.AgenteCRUDService"
+		parent="abstractGenericCRUDServiceTarget" autowire-candidate="false">
+		<property name="agenteDAO" ref="agenteDAO" />
+	</bean>
+
+	<!-- SERVICIO CRUD DE TIPO AGENTE -->
+	<bean
+		id="ar.com.mbsoftsa.trazabilidad.service.crud.TipoAgenteCRUDServiceTarget"
+		class="ar.com.mbsoftsa.trazabilidad.service.crud.TipoAgenteCRUDService"
+		parent="abstractGenericCRUDServiceTarget" autowire-candidate="false">
+		<property name="tipoAgenteDAO" ref="tipoAgenteDAO" />
+	</bean>
+
+	<!-- SERVICIO CRUD DE EVENTO -->
+	<bean
+		id="ar.com.mbsoftsa.trazabilidad.service.crud.EventoCRUDServiceTarget"
+		class="ar.com.mbsoftsa.trazabilidad.service.crud.EventoCRUDService"
+		parent="abstractGenericCRUDServiceTarget" autowire-candidate="false">
+		<property name="eventoDAO" ref="eventoDAO" />
+	</bean>
+
+	<!-- SERVICIO CRUD DE MEDICAMENTO -->
+	<bean
+		id="ar.com.mbsoftsa.trazabilidad.service.crud.MedicamentoCRUDServiceTarget"
+		class="ar.com.mbsoftsa.trazabilidad.service.crud.MedicamentoCRUDService"
+		parent="abstractGenericCRUDServiceTarget" autowire-candidate="false">
+		<property name="medicamentoDAO" ref="medicamentoDAO" />
+	</bean>
+
+	<!-- SERVICIO CRUD DE WSUSER -->
+	<bean
+		id="ar.com.mbsoftsa.trazabilidad.service.crud.WSUserCRUDServiceTarget"
+		class="ar.com.mbsoftsa.trazabilidad.service.crud.WSUserCRUDService"
+		parent="abstractGenericCRUDServiceTarget" autowire-candidate="false">
+		<property name="wsUserDAO" ref="wsUserDAO" />
+	</bean>
+
+	<!-- SERVICIO CRUD DE WSERROR -->
+	<bean
+		id="ar.com.mbsoftsa.trazabilidad.service.crud.WSErrorCRUDServiceTarget"
+		class="ar.com.mbsoftsa.trazabilidad.service.crud.WSErrorCRUDService"
+		parent="abstractGenericCRUDServiceTarget" autowire-candidate="false">
+		<property name="wsErrorDAO" ref="wsErrorDAO" />
+	</bean>
+</beans>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ar.com.mbsoftsa.trazabilidad.domain">
+ <class batch-size="100" lazy="true" name="TipoAgente" table="TZ_TIPO_AGENTE">
+  <id column="ID" name="id" type="long" unsaved-value="0">
+   <generator class="identity"/>
+  </id>
+  <version column="PERSISTENT_VERSION" generated="never"
+   name="persistentVersion" type="long" unsaved-value="negative"/>
+  <property column="DESCRIPCION" generated="never" lazy="false"
+   name="nombre" type="string"/>
+ </class>
+</hibernate-mapping>

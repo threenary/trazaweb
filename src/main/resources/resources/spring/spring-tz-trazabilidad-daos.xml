@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<!--++++++++++++++++++++++++++++++++++++++++++ -->
+	<!--| DAOS DE OBJETOS DE DOMINIO DE WORKFLOW | -->
+	<!--++++++++++++++++++++++++++++++++++++++++++ -->
+	<bean id="agenteDAO" class="ar.com.mbsoftsa.trazabilidad.dao.AgenteDAO" parent="abstractDAO"/>
+	<bean id="eventoDAO" class="ar.com.mbsoftsa.trazabilidad.dao.EventoDAO" parent="abstractDAO"/>
+	<bean id="medicamentoDAO" class="ar.com.mbsoftsa.trazabilidad.dao.MedicamentoDAO" parent="abstractDAO"/>
+	<bean id="tipoAgenteDAO" class="ar.com.mbsoftsa.trazabilidad.dao.TipoAgenteDAO" parent="abstractDAO"/>
+	<bean id="cancelacionDAO" class="ar.com.mbsoftsa.trazabilidad.dao.CancelacionDAO" parent="abstractDAO"/>
+	<bean id="movimientoDAO" class="ar.com.mbsoftsa.trazabilidad.dao.MovimientoDAO" parent="abstractDAO"/>
+	<bean id="envioDAO" class="ar.com.mbsoftsa.trazabilidad.dao.EnvioDAO" parent="abstractDAO"/>
+	<bean id="wsErrorDAO" class="ar.com.mbsoftsa.trazabilidad.dao.WSErrorDAO" parent="abstractDAO"/>
+	<bean id="wsUserDAO" class="ar.com.mbsoftsa.trazabilidad.dao.WSUserDAO" parent="abstractDAO"/>
+</beans>

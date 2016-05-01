@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<bean id="mappingResourcesWorkflow" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<value>resources/mappings/Agente.hbm.xml</value>
+				<value>resources/mappings/Evento.hbm.xml</value>
+				<value>resources/mappings/Medicamento.hbm.xml</value>
+				<value>resources/mappings/Movimiento.hbm.xml</value>
+				<value>resources/mappings/TipoAgente.hbm.xml</value>
+				<value>resources/mappings/Transaccion.hbm.xml</value>
+				<value>resources/mappings/WSError.hbm.xml</value>
+				<value>resources/mappings/WSUser.hbm.xml</value>
+			</list>
+		</constructor-arg>
+	</bean>
+</beans>

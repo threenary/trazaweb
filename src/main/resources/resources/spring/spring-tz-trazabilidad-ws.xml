@@ -1,0 +1,68 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd http://cxf.apache.org/jaxws http://cxf.apache.org/schema/jaxws.xsd">
+
+<!-- 	<bean id="trazabilidadWSClient" -->
+<!-- 		class="ar.com.mbsoftsa.trazabilidad.ws.client.TrazabilidadWSClient"> -->
+<!-- 		<constructor-arg> -->
+<!-- 			<ref bean="webServiceClient" /> -->
+<!-- 		</constructor-arg> -->
+<!-- 	</bean> -->
+	
+	<bean id="trazabilidadWebService" class="com.inssjp.mywebservice.business.IWebService"
+		factory-method="create" factory-bean="clientFactory" />
+	
+	<bean id="clientFactory" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
+		<property name="serviceClass" value="com.inssjp.mywebservice.business.IWebService" />
+		<property name="address" value="https://trazabilidad.pami.org.ar:9050/trazamed.WebService" />
+		<property name="inInterceptors">
+			<list>
+				<bean class="org.apache.cxf.interceptor.LoggingInInterceptor" />
+			</list>
+		</property>
+		<property name="outInterceptors">
+			<list>
+				<bean class="org.apache.cxf.interceptor.LoggingOutInterceptor" />
+				<bean class="org.apache.cxf.binding.soap.saaj.SAAJOutInterceptor" />
+				<ref bean="wss4jOutConfiguration" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="wss4jOutConfiguration" class="org.apache.cxf.ws.security.wss4j.WSS4JOutInterceptor">
+		<property name="properties">
+			<map>
+				<entry key="action" value="UsernameToken" />
+				<entry key="user" value="testwservice" />
+				<entry key="passwordType" value="PasswordText" />
+				<entry>
+					<key>
+						<value>passwordCallbackRef</value>
+					</key>
+					<ref bean="passwordCallback" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="passwordCallback"
+		class="ar.com.mbsoftsa.trazabilidad.ws.security.PasswordCallback">
+		<property name="usr">
+			<value>${sntm.transportUsr}</value>
+		</property>
+		<property name="pwd">
+			<value>${sntm.transportPwd}</value>
+		</property>
+	</bean>
+
+<!-- 	<bean id="trazabilidadWebService" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean"> -->
+<!-- 		<property name="serviceInterface" value="com.inssjp.mywebservice.business.IWebService" /> -->
+<!-- 		<property name="wsdlDocumentUrl" value="https://trazabilidad.pami.org.ar:9050/trazamed.WebService?wsdl" /> -->
+<!-- 		<property name="namespaceUri" value="http://business.mywebservice.inssjp.com/" /> -->
+<!-- 		<property name="serviceName" value="IWebServiceService" /> -->
+<!-- 		<property name="portName" value="IWebServicePort"/> -->
+<!-- 	</bean> -->
+
+
+</beans>
+

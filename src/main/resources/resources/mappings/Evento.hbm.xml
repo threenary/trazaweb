@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ar.com.mbsoftsa.trazabilidad.domain">
+	<class batch-size="100" lazy="true" name="Evento" table="TZ_EVENTO">
+		<id column="ID" name="id" type="long" unsaved-value="0">
+			<generator class="identity" />
+		</id>
+		<version column="PERSISTENT_VERSION" generated="never"
+			name="persistentVersion" type="long" unsaved-value="negative" />
+			
+		<property column="CODIGO" generated="never" lazy="false"
+			name="codigo" not-null="true" type="integer" />
+			
+		<property column="DESCRIPCION" generated="never" lazy="false"
+			name="descripcion" not-null="true" type="string" />
+			
+		<many-to-one cascade="all" class="TipoAgente"
+			column="ID_TIPO_AGENTE_INFORMANTE" name="tipoAgenteInformante"
+			not-null="true" unique="true" />
+			
+		<many-to-one cascade="all" class="TipoAgente" column="ID_TIPO_AGENTE_ORIGEN"
+			name="tipoAgenteOrigen" not-null="true" unique="true" />
+			
+		<many-to-one cascade="all" class="TipoAgente" column="ID_TIPO_AGENTE_DESTINO"
+			name="tipoAgenteDestino" not-null="false" unique="true" />
+	</class>
+</hibernate-mapping>

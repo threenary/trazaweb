@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ar.com.mbsoftsa.trazabilidad.domain">
+	<class abstract="true" batch-size="100" lazy="true"
+		name="AbstractTransaccion" table="TZ_TRANSACCION">
+		<id column="ID" name="id" type="long" unsaved-value="0">
+			<generator class="identity" />
+		</id>
+
+		<version column="PERSISTENT_VERSION" generated="never"
+			name="persistentVersion" type="long" unsaved-value="negative" />
+
+		<property column="CODIGO_TRANSACCION" generated="never" lazy="false"
+			name="codigoTransaccion" type="string" />
+
+		<property column="FECHA_TRANSACCION" generated="never" lazy="false"
+			name="fechaTransaccion" type="calendar" />
+			
+		<property name="estado" column="ESTADO" not-null="true">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">ar.com.mbsoftsa.trazabilidad.domain.enums.EstadoTrazable</param>
+				<param name="type">12</param>
+			</type>
+		</property>			
+
+		<set cascade="all" name="errores" sort="unsorted" table="TZ_ERROR_TRANSACCION"
+			lazy="false">
+			<key column="ID_TRANSACCION" />
+			<many-to-many class="WSError" column="ID_ERROR" lazy="false" />
+		</set>
+		
+		<joined-subclass name="Envio" table="TZ_ENVIO">
+			<key column="ID" />
+
+			<property column="FECHA_VENCIMIENTO" name="vencimiento"
+				type="calendar" />
+
+			<property column="NRO_LOTE" name="lote" type="string" />
+
+			<property column="NRO_SERIAL" name="serie" type="string" />
+
+			<many-to-one column="ID_MEDICAMENTO" name="medicamento"
+				class="Medicamento" not-null="true" cascade="save-update" />
+
+			<many-to-one name="movimiento" class="Movimiento" column="ID_MOVIMIENTO"
+				not-null="true" />
+		</joined-subclass>
+
+		<joined-subclass table="TZ_CANCELACION" name="Cancelacion">
+			<key column="ID" />
+			<many-to-one column="ID_ENVIO_CANCELADO" name="envioCancelado"
+				class="Envio" not-null="true" lazy="false" cascade="save-update" />
+		</joined-subclass>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<!-- SERVICIO DE EMAIL -->
+<!-- 	<bean -->
+<!-- 		id="ar.com.mbsoftsa.trazabilidad.service.email.EmailWorkflowBusinessServiceTarget" -->
+<!-- 		class="ar.com.mbsoftsa.trazabilidad.service.email.EmailWorkflowBusinessService" -->
+<!-- 		parent="ar.com.mbsoftsa.generic.service.email.AbstractEmailBusinessService"> -->
+<!-- 		<property name="emailTemplatesLocator" ref="emailTemplatesLocator" /> -->
+<!-- 	</bean> -->
+
+	<!-- PROXY PARA SERVICIO DE EMAIL -->
+<!-- 	<bean id="ar.com.mbsoftsa.trazabilidad.service.email.IEmailWorkflowBusinessService" -->
+<!-- 		class="org.springframework.aop.framework.ProxyFactoryBean"> -->
+<!-- 		<property name="target"> -->
+<!-- 			<ref bean="ar.com.mbsoftsa.trazabilidad.service.email.EmailWorkflowBusinessServiceTarget" /> -->
+<!-- 		</property> -->
+<!-- 		<property name="proxyInterfaces"> -->
+<!-- 			<value>ar.com.mbsoftsa.trazabilidad.service.email.IEmailWorkflowBusinessService</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="interceptorNames"> -->
+<!-- 			<list> -->
+<!-- 				<idref bean="exceptionAdvisor"></idref> -->
+<!-- 				<idref bean="dataAccessExceptionAdvisor"></idref> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+
+	<!-- BEAN DE CONFIGURACION DE UBICACION DE TEMPLATES DE MAILS -->
+	<bean id="emailTemplatesLocator"
+		class="ar.com.mbsoftsa.trazabilidad.service.email.EmailWorkflowTemplatesLocator">
+		<property name="urlSite">
+			<value>${workflow.emailTemplatesLocator.urlSite}</value>
+		</property>
+		<property name="emailActualizacionPeticion">
+			<value>${workflow.emailTemplatesLocator.emailActualizacionPeticion}</value>
+		</property>
+		<property name="emailCambioEstadoPeticion">
+			<value>${workflow.emailTemplatesLocator.emailCambioEstadoPeticion}</value>
+		</property>
+		<property name="emailComentarioPeticion">
+			<value>${workflow.emailTemplatesLocator.emailComentarioPeticion}</value>
+		</property>
+		<property name="emailActividadEnPeticion">
+			<value>${workflow.emailTemplatesLocator.emailActividadEnPeticion}</value>
+		</property>
+		<property name="emailRecursoEnPeticion">
+			<value>${workflow.emailTemplatesLocator.emailRecursoEnPeticion}</value>
+		</property>
+		<property name="emailReasignacionPeticion">
+			<value>${workflow.emailTemplatesLocator.emailReasignacionPeticion}</value>
+		</property>
+		<property name="emailCreacionPeticion">
+			<value>${workflow.emailTemplatesLocator.emailCreacionPeticion}</value>
+		</property>
+	</bean>
+
+</beans>
